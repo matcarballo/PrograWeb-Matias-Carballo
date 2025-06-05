@@ -235,6 +235,22 @@ main {
   align-items: center;
 }
 
+.sidebar-header h2 {
+  font-family: 'Playfair Display', serif;
+  color: #f9e79f;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.carrito-separador {
+  border: none;
+  border-top: 2px solid #f9e79f;
+  margin: 12px 0 18px 0;
+  opacity: 0.7;
+}
+
 .cerrar-carrito {
   background: none;
   border: none;
@@ -285,6 +301,16 @@ main {
 
 .carrito-item-cantidad button:hover {
   background: #fffbe6;
+}
+
+.carrito-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 18px;
+  text-align: right;
+  color: #f9e79f;
+  border-top: 2px solid #f9e79f;
+  padding-top: 10px;
 }
 
 .eliminar-item {
