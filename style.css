@@ -48,6 +48,44 @@ main {
   margin-top: 0;
 }
 
+.filtro-marcas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+.filtro-marcas label {
+  color: #f9e79f;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#filtro-marca {
+  background: #20451f;
+  color: #f9e79f;
+  border: 2px solid #f9e79f;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+#filtro-marca:hover,
+#filtro-marca:focus {
+  background: #27632a;
+  color: #fffbe6;
+  border-color: #fffbe6;
+  outline: 2px solid #f9e79f;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
 .productos-grid {
   display: flex;
   flex-wrap: wrap;
@@ -97,18 +135,25 @@ main {
 }
 
 .producto button {
-  background: #20451f;
+  background: linear-gradient(90deg, #20451f 60%, #27632a 100%);
   color: #f9e79f;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 18px;
-  font-size: 1rem;
+  border: 2px solid #f9e79f; /* Borde dorado suave */
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .producto button:hover {
-  background: #27632a;
+  background: linear-gradient(90deg, #27632a 60%, #20451f 100%);
+  color: #fffbe6;
+  border-color: #fffbe6; 
+  transform: scale(1.05);
 }
 
 footer {
