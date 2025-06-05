@@ -53,7 +53,7 @@ header h1 {
 .icono-carrito {
   width: 36px;
   height: 36px;
-  border: none; /* Sin borde */
+  border: none;
   border-radius: 50%;
   padding: 6px;
   filter: brightness(0) saturate(100%) invert(89%) sepia(13%) saturate(1042%) hue-rotate(2deg) brightness(104%) contrast(101%);
@@ -190,7 +190,7 @@ main {
 .producto button {
   background: linear-gradient(90deg, #20451f 60%, #27632a 100%);
   color: #f9e79f;
-  border: 2px solid #f9e79f; /* Borde dorado suave */
+  border: 2px solid #f9e79f;
   border-radius: 8px;
   padding: 10px 24px;
   font-size: 1.1rem;
@@ -208,6 +208,8 @@ main {
   border-color: #fffbe6; 
   transform: scale(1.05);
 }
+
+
 
 footer {
   background: #27632a;
