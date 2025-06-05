@@ -32,7 +32,7 @@ header {
 }
 
 header h1 {
-  flex: 1;
+  flex: 0 1 auto;
   font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
   letter-spacing: 2px;
@@ -40,6 +40,31 @@ header h1 {
   color: #f9e79f;
   text-shadow: 1px 1px 6px #183217;
   text-align: center;
+}
+
+.carrito-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  margin-right: 32px;
+}
+
+.icono-carrito {
+  width: 36px;
+  height: 36px;
+  border: none; /* Sin borde */
+  border-radius: 50%;
+  padding: 6px;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(13%) saturate(1042%) hue-rotate(2deg) brightness(104%) contrast(101%);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.icono-carrito:hover {
+  transform: scale(1.12);
+  filter: invert(100%) brightness(1.5) drop-shadow(0 0 8px #f9e79f);
 }
 
 .nav-header a {
