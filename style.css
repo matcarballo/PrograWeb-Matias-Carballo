@@ -11,21 +11,49 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 70px;
   background: #20451f;
   color: #f9e79f;
-  padding: 24px 0 16px 0;
-  text-align: center;
+  padding: 14px 0 10px 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-header {
+  display: flex;
+  gap: 18px;
+  margin-left: 32px;
+  margin-bottom: 0;
+  flex: 1;
+  justify-content: flex-start;
 }
 
 header h1 {
+  flex: 1;
   font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
   letter-spacing: 2px;
   margin: 0;
   color: #f9e79f;
   text-shadow: 1px 1px 6px #183217;
+  text-align: center;
+}
+
+.nav-header a {
+  color: #f9e79f;
+  text-decoration: none;
+  margin: 0 18px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.nav-header a:hover {
+  color: #fffbe6;
+  text-decoration: underline;
 }
 
 main {
