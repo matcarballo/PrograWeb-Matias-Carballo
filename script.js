@@ -13,3 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+const sidebar = document.getElementById('sidebar-carrito');
+const btnCarrito = document.querySelector('.icono-carrito');
+const btnCerrar = document.getElementById('cerrar-carrito');
+
+btnCarrito.addEventListener('click', () => {
+  sidebar.classList.add('abierto');
+});
+
+btnCerrar.addEventListener('click', () => {
+  sidebar.classList.remove('abierto');
+});
