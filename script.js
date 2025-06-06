@@ -79,6 +79,7 @@ function renderCarrito() {
       renderCarrito();
     };
   });
+  document.getElementById('carrito-cantidad').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 }
 
 // evento para agregar productos al carrito

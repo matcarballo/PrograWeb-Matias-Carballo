@@ -322,11 +322,28 @@ main {
   margin-left: 8px;
 }
 
-.carrito-total {
-  font-size: 1.2rem;
+.carrito-header {
+  position: relative;
+  margin-right: 32px;
+}
+
+.carrito-cantidad {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
   font-weight: bold;
-  margin-top: 18px;
-  text-align: right;
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px #b03a2e;
+  pointer-events: none;
 }
 
 footer {
