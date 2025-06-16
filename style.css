@@ -7,15 +7,14 @@ body {
 }
 
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   min-height: 70px;
   background: #20451f;
   color: #f9e79f;
   padding: 14px 0 10px 0;
-  z-index: 1000;
+  z-index: 2001;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   display: flex;
   align-items: center;
@@ -79,6 +78,53 @@ header h1 {
 .nav-header a:hover {
   color: #fffbe6;
   text-decoration: underline;
+}
+
+.barra-contacto {
+  display: none;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  background: #183217;
+  color: #f9e79f;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  padding: 12px 0;
+  border-bottom: 2px solid #f9e79f;
+  position: sticky;
+  top: 84px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1200;
+}
+
+.barra-contacto.visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.barra-contacto a {
+  color: #f9e79f;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.barra-contacto a:hover {
+  color: #fffbe6;
+}
+
+.icono-red {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 2px #20451f);
 }
 
 main {

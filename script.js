@@ -9,7 +9,7 @@ const productos = [
     nombre: "Adidas Gold",
     precio: 110,
     marca: "adidas",
-    imagen: "https://juanperez.com.ar/cdn/shop/files/5477821.T6_281_29.jpg?v=1724694623&width=1445"
+    imagen: "https://media2.solodeportes.com.ar/media/catalog/product/cache/3cb7d75bc2a65211451e92c5381048e9/b/o/botines-de-futbol-adidas-f50-league-messi-fg-mg-dorado-100010ig9274001-1.jpg"
   },
   {
     nombre: "Nike Clasicos",
@@ -223,6 +223,14 @@ function renderCarrito() {
   });
   document.getElementById('carrito-cantidad').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 }
+
+const contactoBtn = document.querySelector('a[href="#copyr"]');
+const barraContacto = document.getElementById('barra-contacto');
+
+contactoBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  barraContacto.classList.toggle('visible');
+});
 
 // evento para agregar productos al carrito
 botonesAgregar.forEach((btn) => {
