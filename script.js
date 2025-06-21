@@ -222,6 +222,7 @@ function renderCarrito() {
     };
   });
   document.getElementById('carrito-cantidad').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  document.getElementById('carrito-cantidad-total').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 }
 
 const contactoBtn = document.querySelector('a[href="#copyr"]');

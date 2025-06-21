@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('pastos.jpg') no-repeat center center fixed;
+  background: url('fondo.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
 }
@@ -306,9 +306,9 @@ main {
 }
 
 .carrito-items {
-  flex: 1;
+  flex: 1 1 auto;
   overflow-y: auto;
-  margin-top: 18px;
+  margin-bottom: 10px;
 }
 
 .carrito-item {
@@ -349,14 +349,48 @@ main {
   background: #fffbe6;
 }
 
+.carrito-cantidad-total {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  text-align: right;
+  color: #f9e79f;
+}
+
 .carrito-total {
   font-size: 1.3rem;
   font-weight: bold;
   margin-top: 18px;
+  margin-bottom: 10px;
   text-align: right;
   color: #f9e79f;
   border-top: 2px solid #f9e79f;
   padding-top: 10px;
+}
+
+.btn-comprar {
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 32px;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #20451f 60%, #27632a 100%);
+  color: #f9e79f;
+  border: 2px solid #f9e79f;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.btn-comprar:hover {
+  background: linear-gradient(90deg, #27632a 60%, #20451f 100%);
+  color: #fffbe6;
+  border-color: #fffbe6;
+  transform: scale(1.03);
 }
 
 .eliminar-item {
