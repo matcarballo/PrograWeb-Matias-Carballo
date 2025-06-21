@@ -109,9 +109,16 @@ const productos = [
   }
 ];
 
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 const productosGrid = document.querySelector('.productos-grid');
+const carritoItems = document.getElementById('carrito-items');
+const carritoTotal = document.getElementById('carrito-total');
+const filtro = document.getElementById('filtro-marca');
+const sidebar = document.getElementById('sidebar-carrito');
+const btnCarrito = document.querySelector('.icono-carrito');
+const contactoBtn = document.querySelector('a[href="#copyr"]');
+const barraContacto = document.getElementById('barra-contacto');
 
 function renderizarProductos(lista) {
   productosGrid.innerHTML = '';
@@ -127,56 +134,6 @@ function renderizarProductos(lista) {
   });
 }
 
-renderizarProductos(productos);
-
-productosGrid.addEventListener('click', function(e) {
-  if (e.target.tagName === 'BUTTON') {
-    const productoDiv = e.target.closest('.producto');
-    const nombre = productoDiv.querySelector('h3').textContent;
-    const producto = productos.find(p => p.nombre === nombre);
-    const index = carrito.findIndex(item => item.nombre === producto.nombre);
-    if (index > -1) {
-      carrito[index].cantidad += 1;
-    } else {
-      carrito.push({ nombre: producto.nombre, precio: producto.precio, cantidad: 1 });
-    }
-    renderCarrito();
-  }
-});
-
-const filtro = document.getElementById('filtro-marca');
-
-filtro.addEventListener('change', function () {
-  const marca = filtro.value;
-  let productosFiltrados = productos;
-  if (marca !== 'todas') {
-    productosFiltrados = productos.filter(producto => producto.marca === marca);
-  }
-  renderizarProductos(productosFiltrados);
-});
-
-
-const sidebar = document.getElementById('sidebar-carrito');
-const btnCarrito = document.querySelector('.icono-carrito');
-
-btnCarrito.addEventListener('click', () => {
-  if (sidebar.classList.contains('abierto')) {
-    sidebar.classList.remove('abierto');
-  } else {
-    sidebar.classList.add('abierto');
-  }
-});
-
-document.addEventListener('click', function(e) {
-  if (e.target && e.target.id === 'cerrar-carrito') {
-    sidebar.classList.remove('abierto');
-  }
-});
-
-const carritoItems = document.getElementById('carrito-items');
-const carritoTotal = document.getElementById('carrito-total');
-
-// actualiza la vista del carrito
 function renderCarrito() {
   carritoItems.innerHTML = '';
   let total = 0;
@@ -221,12 +178,58 @@ function renderCarrito() {
       renderCarrito();
     };
   });
-  document.getElementById('carrito-cantidad').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-  document.getElementById('carrito-cantidad-total').textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  const cantHeader = document.getElementById('carrito-cantidad');
+  if (cantHeader) {
+    cantHeader.textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  }
+  const cantTotal = document.getElementById('carrito-cantidad-total');
+  if (cantTotal) {
+    cantTotal.textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  }
+  localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-const contactoBtn = document.querySelector('a[href="#copyr"]');
-const barraContacto = document.getElementById('barra-contacto');
+renderizarProductos(productos);
+renderCarrito();
+
+productosGrid.addEventListener('click', function(e) {
+  if (e.target.tagName === 'BUTTON') {
+    const productoDiv = e.target.closest('.producto');
+    const nombre = productoDiv.querySelector('h3').textContent;
+    const producto = productos.find(p => p.nombre === nombre);
+    const index = carrito.findIndex(item => item.nombre === producto.nombre);
+    if (index > -1) {
+      carrito[index].cantidad += 1;
+    } else {
+      carrito.push({ nombre: producto.nombre, precio: producto.precio, cantidad: 1 });
+    }
+    renderCarrito();
+  }
+});
+
+filtro.addEventListener('change', function () {
+  const marca = filtro.value;
+  let productosFiltrados = productos;
+  if (marca !== 'todas') {
+    productosFiltrados = productos.filter(producto => producto.marca === marca);
+  }
+  renderizarProductos(productosFiltrados);
+  renderCarrito();
+});
+
+btnCarrito.addEventListener('click', () => {
+  if (sidebar.classList.contains('abierto')) {
+    sidebar.classList.remove('abierto');
+  } else {
+    sidebar.classList.add('abierto');
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.id === 'cerrar-carrito') {
+    sidebar.classList.remove('abierto');
+  }
+});
 
 contactoBtn.addEventListener('click', (e) => {
   e.preventDefault();
