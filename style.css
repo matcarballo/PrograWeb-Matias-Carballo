@@ -493,3 +493,89 @@ footer {
 footer p {
   color:#f9e79f
 }
+
+.modal-compra {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+}
+
+.modal-contenido {
+  background: #20451f;
+  color: #f9e79f;
+  padding: 36px 28px 28px 28px;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.22);
+  min-width: 320px;
+  max-width: 95vw;
+  text-align: center;
+  position: relative;
+}
+
+.metodos-pago {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 12px 0 18px 0;
+}
+
+.modal-contenido input[type="text"],
+.modal-contenido input[type="tel"] {
+  width: 90%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #f9e79f;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  background: #fff;
+  color: #20451f;
+}
+
+.btn-confirmar, .btn-cerrar-modal {
+  margin: 14px 8px 0 8px;
+  background: linear-gradient(90deg, #20451f 60%, #27632a 100%);
+  color: #f9e79f;
+  border: 2px solid #f9e79f;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-confirmar:hover, .btn-cerrar-modal:hover {
+  background: linear-gradient(90deg, #27632a 60%, #20451f 100%);
+  color: #fffbe6;
+  border-color: #fffbe6;
+}
+
+.mensaje-exito {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  color: #f9e79f;
+}
+
+.resumen-pedido {
+  background: #27632a;
+  color: #f9e79f;
+  border-radius: 10px;
+  padding: 16px 12px;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.resumen-pedido ul {
+  list-style: disc inside;
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+.resumen-pedido li {
+  margin-bottom: 4px;
+}

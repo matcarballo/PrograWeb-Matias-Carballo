@@ -78,6 +78,26 @@
   <footer>
     <p id="copyr">&copy; 2025 Tienda de Botines. Todos los derechos reservados.</p>
   </footer>
+  <div id="modal-compra" class="modal-compra" style="display:none;">
+    <div class="modal-contenido">
+      <h2>Finalizar compra</h2>
+      <div id="resumen-pedido" class="resumen-pedido"></div>
+      <form id="form-compra" autocomplete="off">
+        <label>Método de pago:</label>
+        <div class="metodos-pago">
+          <label><input type="radio" name="pago" value="MercadoPago"> MercadoPago</label>
+          <label><input type="radio" name="pago" value="Efectivo"> Efectivo</label>
+        </div>
+        <input type="text" name="domicilio" placeholder="Domicilio de entrega">
+        <input type="tel" name="telefono" placeholder="Teléfono">
+        <button type="submit" class="btn-confirmar">Confirmar compra</button>
+        <button type="button" id="cerrar-modal-compra" class="btn-cerrar-modal">Cancelar</button>
+      </form>
+      <div id="mensaje-exito" class="mensaje-exito" style="display:none;">
+        ¡Gracias por tu compra! Pronto nos pondremos en contacto.
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

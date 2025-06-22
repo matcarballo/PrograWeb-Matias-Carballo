@@ -235,3 +235,67 @@ contactoBtn.addEventListener('click', (e) => {
   e.preventDefault();
   barraContacto.classList.toggle('visible');
 });
+
+function mostrarResumenPedido() {
+  const resumenDiv = document.getElementById('resumen-pedido');
+  if (!carrito.length) {
+    resumenDiv.innerHTML = '<p>No hay productos en el carrito.</p>';
+    return;
+  }
+  let html = '<h3>Resumen de tu pedido</h3><ul style="text-align:left">';
+  let total = 0, cantidad = 0;
+  carrito.forEach(item => {
+    html += `<li>${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}</li>`;
+    total += item.precio * item.cantidad;
+    cantidad += item.cantidad;
+  });
+  html += `</ul><p><strong>Total productos:</strong> ${cantidad}</p>`;
+  html += `<p><strong>Total a pagar:</strong> $${total}</p>`;
+  resumenDiv.innerHTML = html;
+}
+
+document.getElementById('btn-comprar').addEventListener('click', () => {
+  if (carrito.length === 0) {
+    alert('El carrito está vacío.');
+    return;
+  }
+  mostrarResumenPedido();
+  document.getElementById('modal-compra').style.display = 'flex';
+  document.getElementById('mensaje-exito').style.display = 'none';
+  document.getElementById('form-compra').reset();
+});
+
+document.getElementById('cerrar-modal-compra').addEventListener('click', () => {
+  document.getElementById('modal-compra').style.display = 'none';
+});
+
+document.getElementById('form-compra').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const pago = this.pago.value;
+  const domicilio = this.domicilio.value.trim();
+  const telefono = this.telefono.value.trim();
+
+  if (!pago) {
+    alert('Por favor, seleccioná un método de pago.');
+    return;
+  }
+  if (!domicilio) {
+    alert('Por favor, ingresá un domicilio.');
+    this.domicilio.focus();
+    return;
+  }
+  if (!/^\d{8,15}$/.test(telefono)) {
+    alert('El teléfono debe tener solo números (8 a 15 dígitos).');
+    this.telefono.focus();
+    return;
+  }
+
+  carrito = [];
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  renderCarrito();
+
+  document.getElementById('mensaje-exito').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('modal-compra').style.display = 'none';
+  }, 2500);
+});
