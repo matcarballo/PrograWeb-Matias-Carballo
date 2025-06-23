@@ -290,6 +290,19 @@ document.getElementById('form-compra').addEventListener('submit', function(e) {
     return;
   }
 
+  // GUARDAR LA COMPRA EN LOCALSTORAGE
+  const compra = {
+    productos: carrito.map(p => ({ nombre: p.nombre, cantidad: p.cantidad, precio: p.precio })),
+    total: carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0),
+    pago,
+    domicilio,
+    telefono,
+    fecha: new Date().toLocaleString()
+  };
+  let compras = JSON.parse(localStorage.getItem('compras')) || [];
+  compras.push(compra);
+  localStorage.setItem('compras', JSON.stringify(compras));
+
   carrito = [];
   localStorage.setItem('carrito', JSON.stringify(carrito));
   renderCarrito();
@@ -299,3 +312,55 @@ document.getElementById('form-compra').addEventListener('submit', function(e) {
     document.getElementById('modal-compra').style.display = 'none';
   }, 2500);
 });
+
+// Mostrar el modal de compras al hacer click en el botón
+document.getElementById('btn-mis-compras').addEventListener('click', function() {
+  mostrarHistorialCompras();
+  document.getElementById('modal-compras').style.display = 'flex';
+});
+
+// Cerrar el modal de compras
+document.getElementById('cerrar-modal-compras').addEventListener('click', function() {
+  document.getElementById('modal-compras').style.display = 'none';
+});
+
+// Mostrar historial de compras
+function mostrarHistorialCompras() {
+  const cont = document.getElementById('historial-compras');
+  let compras = JSON.parse(localStorage.getItem('compras')) || [];
+  if (!compras.length) {
+    cont.innerHTML = `<p style="text-align:center;">No se realizó ninguna compra todavía.</p>`;
+    return;
+  }
+  cont.innerHTML = compras.map((c, i) => `
+    <div class="compra-item">
+      <strong>Compra #${i+1} - ${c.fecha || ''}</strong><br>
+      <em>Método: ${c.pago}</em><br>
+      <em>Domicilio: ${c.domicilio}</em><br>
+      <em>Teléfono: ${c.telefono}</em><br>
+      <ul>
+        ${c.productos.map(p => `<li>${p.nombre} x${p.cantidad} - $${p.precio * p.cantidad}</li>`).join('')}
+      </ul>
+      <strong>Total: $${c.total}</strong>
+      <button class="btn-cancelar-compra" data-indice="${i}">Cancelar pedido</button>
+    </div>
+  `).join('');
+
+  // Asignar eventos a los botones de cancelar
+  document.querySelectorAll('.btn-cancelar-compra').forEach(btn => {
+    btn.onclick = function() {
+      const idx = this.getAttribute('data-indice');
+      if (confirm('¿Estás seguro que quieres cancelar esta compra?')) {
+        eliminarCompra(idx);
+      }
+    };
+  });
+}
+
+// Eliminar una compra del historial
+function eliminarCompra(indice) {
+  let compras = JSON.parse(localStorage.getItem('compras')) || [];
+  compras.splice(indice, 1);
+  localStorage.setItem('compras', JSON.stringify(compras));
+  mostrarHistorialCompras();
+}

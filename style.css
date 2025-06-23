@@ -183,7 +183,7 @@ header h1 {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 120px 20px 40px 20px; 
+  padding: 60px 20px 40px 20px; 
 }
 
 .productos-contenedor {
@@ -578,4 +578,88 @@ footer p {
 }
 .resumen-pedido li {
   margin-bottom: 4px;
+}
+
+.btn-mis-compras {
+  display: block;
+  margin: 24px auto 0 auto;
+  background: linear-gradient(90deg, #20451f 60%, #27632a 100%);
+  color: #f9e79f;
+  border: 2px solid #f9e79f;
+  border-radius: 10px;
+  padding: 12px 36px;
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-mis-compras:hover {
+  background: linear-gradient(90deg, #27632a 60%, #20451f 100%);
+  color: #fffbe6;
+  border-color: #fffbe6;
+  transform: scale(1.04);
+}
+
+.modal-compras {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+}
+
+.modal-compras .modal-contenido {
+  background: #20451f;
+  color: #f9e79f;
+  padding: 36px 28px 28px 28px;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.22);
+  min-width: 320px;
+  max-width: 95vw;
+  text-align: center;
+  position: relative;
+}
+
+.historial-compras {
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.compra-item {
+  background: #27632a;
+  border-radius: 12px;
+  padding: 16px 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  position: relative;
+}
+
+.compra-item strong {
+  color: #f9e79f;
+}
+
+.btn-cancelar-compra {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancelar-compra:hover {
+  background: #c0392b;
 }
