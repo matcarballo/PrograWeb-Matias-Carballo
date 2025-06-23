@@ -364,3 +364,17 @@ function eliminarCompra(indice) {
   localStorage.setItem('compras', JSON.stringify(compras));
   mostrarHistorialCompras();
 }
+
+const btnScrollTop = document.getElementById('btn-scroll-top');
+
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 200) {
+    btnScrollTop.style.display = 'flex';
+  } else {
+    btnScrollTop.style.display = 'none';
+  }
+});
+
+btnScrollTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

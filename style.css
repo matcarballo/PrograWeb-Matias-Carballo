@@ -663,3 +663,31 @@ footer p {
 .btn-cancelar-compra:hover {
   background: #c0392b;
 }
+
+.btn-scroll-top {
+  position: fixed;
+  bottom: 90px;
+  left: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #20451f;
+  color: #f9e79f;
+  border: 2px solid #f9e79f;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn-scroll-top:hover {
+  background: #27632a;
+  color: #fffbe6;
+  border-color: #fffbe6;
+  transform: scale(1.08);
+}
