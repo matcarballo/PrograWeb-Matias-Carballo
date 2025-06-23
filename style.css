@@ -505,6 +505,8 @@ footer p {
 }
 
 .modal-contenido {
+  max-height: 90vh;
+  overflow-y: auto;
   background: #20451f;
   color: #f9e79f;
   padding: 36px 28px 28px 28px;
